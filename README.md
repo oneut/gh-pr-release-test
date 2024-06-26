@@ -1,1 +1,1 @@
-# gh-pr-release-test
+# git-pr-release-test
