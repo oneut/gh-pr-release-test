@@ -25,4 +25,4 @@ jobs:
     - name: Sync labels
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: node .github/workflows/scripts/sync-labels.js
+      run: node .github/workflows/scripts/sync-labels.mjs
