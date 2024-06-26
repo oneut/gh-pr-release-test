@@ -13,12 +13,12 @@ async function run() {
   const headBranch = context.payload.pull_request.head.ref;
 
   // ベースブランチと作成されたブランチ間のマージされたプルリクエストを取得
-  const { data: pulls } = await octokit.pulls.list({
+  const { data: pulls } = await octokit.rest.pulls.list({
     owner,
     repo,
     state: 'closed',
     base: baseBranch,
-    head: headBranch,
+    head: `${owner}:${headBranch}`,
   });
 
   // マージされたプルリクエストのラベルを取得
@@ -30,7 +30,7 @@ async function run() {
 
   // 新しいプルリクエストにラベルを付与
   if (labels.size > 0) {
-    await octokit.issues.addLabels({
+    await octokit.rest.issues.addLabels({
       owner,
       repo,
       issue_number: prNumber,

@@ -17,8 +17,10 @@ jobs:
       with:
         node-version: '16'
 
-    - name: Install octokit
-      run: npm install @octokit/rest
+    - name: Install dependencies
+      run: |
+        npm init -y
+        npm install @octokit/rest @actions/github
 
     - name: Sync labels
       env:
