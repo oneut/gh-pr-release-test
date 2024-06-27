@@ -30,6 +30,7 @@ async function run() {
 
   // 新しいプルリクエストにラベルを付与
   if (labels.size > 0) {
+    console.log(`Adding labels ${Array.from(labels).join(', ')} to PR ${prNumber}`);
     await octokit.rest.issues.addLabels({
       owner,
       repo,
