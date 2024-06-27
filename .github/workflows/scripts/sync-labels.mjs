@@ -11,6 +11,7 @@ async function run() {
   const prNumber = context.payload.pull_request.number;
   const baseBranch = context.payload.pull_request.base.ref;
   const headBranch = context.payload.pull_request.head.ref;
+  console.log(`PR ${prNumber} from ${headBranch} to ${baseBranch}`);
 
   // ベースブランチと作成されたブランチ間のマージされたプルリクエストを取得
   const { data: pulls } = await octokit.rest.pulls.list({
