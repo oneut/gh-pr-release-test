@@ -1,0 +1,7 @@
+Release <%= Time.now.strftime("%Y-%m-%d") %>
+<% pull_requests.each do |pr| -%>
+<%= pr.to_checklist_item(false) -%>
+<% pr.labels.each do |labels| -%>
+ <%= "[#{labels.name}]" -%>
+<% end %>
+<% end -%>
