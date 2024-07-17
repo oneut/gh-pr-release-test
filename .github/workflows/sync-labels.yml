@@ -12,17 +12,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20'
-
-    - name: Install dependencies
-      run: |
-        npm init -y
-        npm install @octokit/rest @actions/github
-
     - name: Sync labels
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: node .github/workflows/scripts/sync-labels.mjs
+      run: bash .github/workflows/scripts/sync_labels.sh "${{ github.base_ref }}" "${{ github.head_ref }}" ${{ github.event.pull_request.number }}
